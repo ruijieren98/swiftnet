@@ -113,6 +113,7 @@ class Trainer:
                 batch_iterator = iter(enumerate(self.loader_train))
                 start_t = perf_counter()
                 for step, batch in batch_iterator:
+                    gt = batch['original_labels']
                     self.optimizer.zero_grad()
                     loss = self.model.loss(batch)
                     loss.backward()
